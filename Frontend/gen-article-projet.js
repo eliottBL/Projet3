@@ -1,5 +1,5 @@
 //gen-artcile-projet
-// créer [i] projets (article>img>h5) in .gallery
+// créer [i] projets (figure>img>h5) in .gallery
 
 const reponse = await fetch("http://localhost:5678/api/works");
 const projets = await reponse.json();
