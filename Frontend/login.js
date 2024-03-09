@@ -1,38 +1,37 @@
-const formulaireConnexion = document.querySelector(".connexion");
-formulaireConnexion.addEventListener("submit", function (event) {
-event.preventDefault();
-const connexion = {
-    email: event.target.querySelector("[name=email]").value,
-    password: event.target.querySelector("[name=password]").value
-};
-//const chargeUtile = JSON.stringify(connexion);
-const chargeUtile = (connexion);
-console.log(chargeUtile);
-fetch ("http://localhost:5678/api/users/login", {
-method: "POST",
-header : {'accept': 'application/json', 'Content-Type':'application/json'}, 
-body: chargeUtile
-    });
-});
+var login = {};
 
- 
+function SaveAndTestToken(login) {
+    window.sessionStorage.setItem("token", login.token ?? null);
+    if ( login.token == window.sessionStorage.getItem("token")){
+        console.log("gooood");
+        // FUNCTION EDIT MODE
+    } else {
+        console.log("no");
+        // FUNCTION ERROR 
+    }
+}
 
-
-// login 
-/* 
-if  fetch (httpp... /Login)) = true 
-alors : d2.style.display = "flex"; (ou none)
-else modal : non authorized 
-
-const connexion = {
-        "email" : event.target.querySelector("[name=email]").value,
-        "password" : event.target.querySelector("[name=password]").value
+async function getResponse(event) {
+    const connexion = {
+        email: event.target.querySelector("[name=email]").value,
+        password: event.target.querySelector("[name=password]").value
     };
     const chargeUtile = JSON.stringify(connexion);
-    fetch ("http://localhost:5678/api/users/login", {
-    method: "POST",
-    body: chargeUtile
-    });
-    });
-    
-*/
+    console.log(chargeUtile);
+
+    const loginJ = await fetch("http://localhost:5678/api/users/login", {
+        method: "POST",
+        headers : {"accept": "application/json", "Content-Type":"application/json"}, 
+        body: chargeUtile
+        });
+    login = await loginJ.json();
+    console.log(login);
+    SaveAndTestToken(login);   
+}
+
+///////////////////////////////////////////////////////////SUMBIT EVENT 
+const formulaireConnexion = document.querySelector(".connexion");
+formulaireConnexion.addEventListener("submit", function (event) {
+    event.preventDefault();
+    getResponse(event);
+});
