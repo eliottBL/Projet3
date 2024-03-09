@@ -1,6 +1,8 @@
 const db = require('./../models');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { where } = require('sequelize');
+const { Where } = require('sequelize/lib/utils');
 const Users = db.users;
 
 exports.signup = async (req, res) => {
