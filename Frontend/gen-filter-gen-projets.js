@@ -27,18 +27,8 @@ function filtrerProjets (projets, i) {
     projetsVisbiles = projetsFiltres;
 }
 
-function isConnected (){
-    let status = window.sessionStorage.getItem("status");
-    if (status == "online") {
-        console.log("online");
-    } else {
-        console.log("offline");
-    }
-}
 
 //PROCESS
-
-isConnected();
 genererArticles (projets);
 document.querySelector(".filter-bar").addEventListener("click", function(event){
     const id = event.target.id;
@@ -61,8 +51,7 @@ document.querySelector(".filter-bar").addEventListener("click", function(event){
         console.log("unknow")
     }
 })
-
-
-function genUserMode() {
-    
-}
+document.querySelector("#login").addEventListener("click", function (event){
+    window.sessionStorage.setItem("status", "offline")
+    window.location.replace("index.html");
+})

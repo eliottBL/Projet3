@@ -57,11 +57,40 @@ body {
 	flex-direction: column;
 }
 
+.mode-edition {
+	display: none;
+	justify-content: center;
+	gap: 10px;
+	color: white;
+	background-color: black;
+	padding: 20px;
+}
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px 0;
+	margin-top: 20px;
 }
+
+.title {
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	margin-bottom: 2em;
+}
+
+.bouton-modifier {
+	display: none;
+	align-items: center;	
+	padding-bottom: 0;
+	gap: 5px;
+	border: 2px solid blueviolet;
+	margin-left: 3%;
+}
+.bouton-modifier:hover {
+	cursor: pointer;
+}
+
 section {
 	margin: 50px 0
 }
@@ -86,8 +115,9 @@ h2{
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
-	color: #1D6154
+	color: #1D6154;
 }
+
 a{
 	text-decoration: none;
 	color: inherit;
@@ -111,6 +141,7 @@ nav li {
 
 li:hover {
 	color: #B1663C;
+	cursor: pointer;
 }
 
 #introduction {
@@ -138,7 +169,6 @@ li:hover {
 }
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
 }
 
 .filter-bar {
