@@ -3,11 +3,10 @@ var login = {};
 function SaveAndTestToken(login) {
     window.sessionStorage.setItem("token", login.token ?? null);
     if ( login.token == window.sessionStorage.getItem("token")){
-        console.log("gooood");
-        // FUNCTION EDIT MODE
+        window.sessionStorage.setItem("status","online")
+        window.location.replace("index.html");
     } else {
-        console.log("no");
-        // FUNCTION ERROR 
+        window.sessionStorage.setItem("status","offline") 
     }
 }
 
@@ -29,7 +28,7 @@ async function getResponse(event) {
     SaveAndTestToken(login);   
 }
 
-///////////////////////////////////////////////////////////SUMBIT EVENT 
+//PROCESS 
 const formulaireConnexion = document.querySelector(".connexion");
 formulaireConnexion.addEventListener("submit", function (event) {
     event.preventDefault();
