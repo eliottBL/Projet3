@@ -1,7 +1,5 @@
 const reponse = await fetch("http://localhost:5678/api/works");
 const projets = await reponse.json();
-var projetsVisbiles = projets
-var projetsFiltres = projets
 
 function genererArticles(projetsVisbiles){
     document.querySelector(".gallery").innerHTML = " ";
@@ -19,39 +17,29 @@ function genererArticles(projetsVisbiles){
     }
 } 
 
-function filtrerProjets (projets, i) {
-    projetsFiltres = projets.filter(function(projets){
-        //console.log(i)
-        return projets.categoryId === i;
+function filtrerProjets (projets, y) {
+    // projetsFiltres = projets.filter(function(projets){
+    //     //console.log(i)
+    //     return projets.categoryId === i;
+    // });
+    // projetsVisbiles = projetsFiltres;
+    let projetsFiltres = projets.filter(function(projets){
+    return projets.category.name === y;
     });
-    projetsVisbiles = projetsFiltres;
+    genererArticles(projetsFiltres)
 }
-
 
 //PROCESS
 genererArticles (projets);
 document.querySelector(".filter-bar").addEventListener("click", function(event){
-    const id = event.target.id;
-    if (id == "tous"){
-        projetsVisbiles = projets;
-        genererArticles (projetsVisbiles);
-    } else if (id == "objets") {
-        let i = 1;
-        filtrerProjets(projets, i);
-        genererArticles (projetsVisbiles);
-    } else if (id == "appartements") {
-        let i = 2;
-        filtrerProjets(projets, i);
-        genererArticles (projetsVisbiles);
-    }  else if (id == "hotels&restaurants") {
-        let i = 3
-        filtrerProjets(projets, i);
-        genererArticles (projetsVisbiles);
+    let categoryName = event.target.dataset.category
+    if (categoryName == "tous"){
+        genererArticles(projets);
     } else {
-        console.log("unknow")
+        filtrerProjets(projets, categoryName);
     }
 })
 document.querySelector("#login").addEventListener("click", function (event){
-    window.sessionStorage.setItem("status", "offline")
+    window.sessionStorage.setItem("status", "offline");
     window.location.replace("index.html");
 })

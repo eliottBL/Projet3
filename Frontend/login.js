@@ -1,12 +1,11 @@
-var login = {};
-
-function SaveAndTestToken(login) {
-    window.sessionStorage.setItem("token", login.token ?? null);
-    if ( login.token == window.sessionStorage.getItem("token")){
+function SaveAndTestToken(x) {
+    if (x == 200){
         window.sessionStorage.setItem("status","online")
+        console.log(sessionStorage)
         window.location.replace("index.html");
     } else {
-        window.sessionStorage.setItem("status","offline") 
+        window.sessionStorage.setItem("status","offline")
+        alert("Erreur dans l’identifiant ou le mot de passe") 
     }
 }
 
@@ -16,16 +15,20 @@ async function getResponse(event) {
         password: event.target.querySelector("[name=password]").value
     };
     const chargeUtile = JSON.stringify(connexion);
-    console.log(chargeUtile);
 
-    const loginJ = await fetch("http://localhost:5678/api/users/login", {
+    // syntax await ?? 
+    //let login = fetch("http://localhost:5678/api/users/login", {
+    //    method: "POST",
+    //    headers : {"accept": "application/json", "Content-Type":"application/json"}, 
+    //    body: chargeUtile
+    //    }).then(SaveAndTestToken(login.status));
+
+    const login = await fetch("http://localhost:5678/api/users/login", {
         method: "POST",
         headers : {"accept": "application/json", "Content-Type":"application/json"}, 
         body: chargeUtile
         });
-    login = await loginJ.json();
-    console.log(login);
-    SaveAndTestToken(login);   
+    SaveAndTestToken(login.status);   
 }
 
 //PROCESS 
