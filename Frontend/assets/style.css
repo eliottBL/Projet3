@@ -72,6 +72,90 @@ header {
 	margin-top: 20px;
 }
 
+modal {
+	margin: 20%;
+	margin-top: 55%;
+	max-width: 630px;
+	width: 100%;
+	position: absolute;
+	z-index: 1;
+	display: none;
+	flex-direction: column;
+	padding: 20px;
+	border-radius: 10px;
+	background-color: #FFFFFF;
+}
+modal > .modal-container-bouton-fermer {
+	display: flex;
+	justify-content: space-between;
+	border: 2px solid blue;
+}
+modal > .modal-container-bouton-fermer > i:hover {
+	cursor: pointer;
+}
+modal > .modal-container-bouton-fermer > #retour {
+	visibility: hidden;
+}
+modal > h3 {
+	text-align: center;
+	font-size: 26px;
+	font-weight: 400;
+	margin-bottom: 40px;
+	margin-top: 20px;
+}
+modal > .modal-container-projets {
+	display: flex;
+	justify-content: center;
+}
+modal > div > .modal-subcontainer-projets {
+	border-bottom: 2px solid #B3B3B3;
+	display: flex;
+	gap: 7px;
+	flex-wrap: wrap;
+	max-width: 420px;
+	padding-bottom: 50px;
+}
+modal > div > .modal-subcontainer-projets > figure {
+	margin-bottom: 20px;
+	width: 76px;
+}
+modal > div > .modal-subcontainer-projets > figure > img {
+	width: 77px;
+}
+modal > div > .modal-subcontainer-projets > figure > div {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 2px;
+	width: 17px;
+	height: 17px;
+	padding: 3px;
+	background-color: black;
+	margin-left: 50px;
+	margin-top: -100px;
+}
+modal > div > .modal-subcontainer-projets > figure > div > i {
+	color: white;
+}
+modal > .modal-container-bouton-ajouter {
+	display: flex;
+	justify-content: center;
+}
+modal > .modal-container-bouton-ajouter > button{
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin : 2em auto ;
+	width: 180px;
+	text-align: center;
+	border-radius: 60px ;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border: none;
+}
+
 .title {
 	display: flex;
 	align-content: center;

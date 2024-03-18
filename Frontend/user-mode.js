@@ -4,8 +4,9 @@ function genUserMode() {
     boutonModifier.style.display = "flex";
     let modeEdition = document.querySelector(".mode-edition");
     modeEdition.style.display = "flex";
+    document.querySelector(".filter-bar").style.visibility = "hidden";
 }
-// en ms 1h = 360000
+// en ms 1h = 3600000
 function sessionExpire (duree){
     setTimeout(()=> {
         window.sessionStorage.setItem("status", "offline");
@@ -18,7 +19,7 @@ function isConnected (){
     if (status == "online") {
         console.log("online");
         genUserMode();
-        sessionExpire(5000);
+        sessionExpire(3600000);
     } else {
         console.log("offline");
     }

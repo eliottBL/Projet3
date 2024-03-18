@@ -16,20 +16,21 @@ async function getResponse(event) {
     };
     const chargeUtile = JSON.stringify(connexion);
 
-    // syntax await ?? 
-    //let login = fetch("http://localhost:5678/api/users/login", {
-    //    method: "POST",
-    //    headers : {"accept": "application/json", "Content-Type":"application/json"}, 
-    //    body: chargeUtile
-    //    }).then(SaveAndTestToken(login.status));
+    /* let login = fetch("http://localhost:5678/api/users/login", {
+        method: "POST",
+        headers : {"accept": "application/json", "Content-Type":"application/json"}, 
+        body: chargeUtile
+       }).then(SaveAndTestToken(login.status));
+       
+    }; */
 
     const login = await fetch("http://localhost:5678/api/users/login", {
         method: "POST",
         headers : {"accept": "application/json", "Content-Type":"application/json"}, 
         body: chargeUtile
         });
-    SaveAndTestToken(login.status);   
-}
+    SaveAndTestToken(login.status); 
+    };
 
 //PROCESS 
 const formulaireConnexion = document.querySelector(".connexion");
