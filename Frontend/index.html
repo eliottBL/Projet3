@@ -43,11 +43,27 @@
 
 			</div>
 			<form class="modal-form">
-
+				<label class="import-label" for="import">
+					<i class="fa-regular fa-image"></i>
+					<span class="import-titre">+ Ajouter photo</span>
+					<span class="import-sous-titre">jpg, png: 4mo max</span>
+					<input id="import" type="file" accept="jpg, png: 4mo max">					
+				</label>				
+				<label for="titre">Titre</label>
+				<input type="text" name="titre" id="titre">
+				<label for="categorie">Catégorie</label>
+				<select id="categorie">
+					<option value=""></option>
+					<option value="objets">Objets</option>
+					<option value="appartements">Appartements</option>
+					<option value="hotels&restaurants">Hotels & restaurants</option>
+				</select>
+				<input id="modal-sumbit" type="submit" value="Envoyer" disabled>
 			</form>
 		</div>
 		<div class="modal-container-bouton-ajouter">
-			<button class="bouton-ajouter">Ajouter une photo</button>
+			<label class="bouton-envoyer" for="modal-sumbit">Envoyer</label>
+			<button class="bouton-ajouter">Ajouter photo</button>
 		</div>
 	</modal>
 	<main>

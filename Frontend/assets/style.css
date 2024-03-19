@@ -65,6 +65,7 @@ body {
 	background-color: black;
 	padding: 20px;
 }
+
 header {
 	display: flex;
 	justify-content: space-between;
@@ -140,20 +141,102 @@ modal > div > .modal-subcontainer-projets > figure > div > i {
 }
 modal > .modal-container-bouton-ajouter {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 }
 modal > .modal-container-bouton-ajouter > button{
 	font-family: 'Syne';
+	font-size: 16px;
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
 	margin : 2em auto ;
 	width: 180px;
 	text-align: center;
-	border-radius: 60px ;
-	padding-top: 10px;
-	padding-bottom: 10px;
+	border-radius: 60px;
 	border: none;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+modal > .modal-container-bouton-ajouter > label {
+	background-color:#A7A7A7;
+	font-family: 'Syne';
+	font-size: 16px;
+	font-weight: 700;
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 180px;
+	text-align: center;
+	height: 50px;
+	margin : 2em auto;
+	border-radius: 60px;
+	display: none;
+}
+modal > .modal-container-projets > form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding-bottom: 70px;
+	border-bottom: 2px solid #B3B3B3;
+}
+modal > .modal-container-projets > form > button {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+modal > .modal-container-projets > form > .import-label {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #E8F1F6 ;
+	padding: 20px;
+	width: 420px;
+}
+modal > .modal-container-projets > form > .import-label > i {
+	width: 76px;
+	height: 76px;
+	color:  #CBD6DC;
+	border: #306685 2px solid;
+}
+modal > .modal-container-projets > form > .import-label > .import-titre{
+	background-color: #CBD6DC ;
+	color: #306685;
+	padding: 10px;
+	margin-top: 10px;
+	border-radius: 50px;
+	text-align: center;
+	width: 50%;
+}
+modal > .modal-container-projets > form > .import-label > .import-sous-titre{
+	font-size: 10px;
+	padding: 10px;	
+}
+modal > .modal-container-projets > form > .import-label > #import{
+	display: none;
+}
+modal > .modal-container-projets > form > input {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+modal > .modal-container-projets > form > select {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+modal > .modal-container-projets > form > #modal-sumbit {
+	display: none;
+}
+
+modal > .modal-container-projets > form > label {
+	margin: 2em 0 1em 0;
 }
 
 .title {

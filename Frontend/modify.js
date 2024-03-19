@@ -18,44 +18,73 @@ function genererGalleryModal(projetsVisbiles){
         containerBoutonElement.appendChild(boutonElement);
     }
 } 
-
-//button 
-document.querySelector(".bouton-modifier").addEventListener("click", function(event){
-    document.querySelector("#retour").style.visibility = "hidden";  
-    document.querySelector(".modal-form").style.display = "none";
-    document.querySelector(".modal-titre").innerHTML = "Galerie photo";
-    document.querySelector(".modal-subcontainer-projets").style.display = "flex";
-    document.querySelector("modal").style.display = "flex";
-    genererGalleryModal(projets);
-    document.querySelector("body").ariaHidden = "false";
-
+function opacite50 (){
     const demilum = "brightness(50%)"
     document.querySelector("body").style.backgroundColor = "grey";
     document.querySelector("header").style.filter = demilum;
     document.querySelector("main").style.filter = demilum;
     document.querySelector("footer").style.filter = demilum;
-});
-document.getElementById("xmark").addEventListener("click", function(event){
-    document.querySelector("modal").style.display = "none";
-    document.querySelector("body").ariaHidden = "true";
-    
+}
+function opacite100(){
     const lum = "brightness(100%)"
     document.querySelector("body").style.backgroundColor = "white";
     document.querySelector("header").style.filter = lum;
     document.querySelector("main").style.filter = lum;
     document.querySelector("footer").style.filter = lum;
-});
-document.getElementById("retour").addEventListener("click", function(event){
+}
+function initModal(){
+    document.querySelector("#retour").style.visibility = "hidden";
+    document.querySelector(".bouton-ajouter").style.display = "flex";
+    document.querySelector(".bouton-envoyer").style.display = "none";  
     document.querySelector(".modal-form").style.display = "none";
     document.querySelector(".modal-titre").innerHTML = "Galerie photo";
     document.querySelector(".modal-subcontainer-projets").style.display = "flex";
-    document.querySelector("#retour").style.visibility = "hidden";    
+}
+document.querySelector(".bouton-modifier").addEventListener("click", function(event){
+    initModal();
+    document.querySelector("modal").style.display = "flex";
+    genererGalleryModal(projets);
+    document.querySelector("body").ariaHidden = "false";
+    opacite50();
+});
+document.getElementById("xmark").addEventListener("click", function(event){
+    document.querySelector("modal").style.display = "none";
+    document.querySelector("body").ariaHidden = "true";
+    opacite100();
+});
+document.getElementById("retour").addEventListener("click", function(event){
+        initModal();   
 });
 document.querySelector(".bouton-ajouter").addEventListener("click", function(event){
     document.querySelector("#retour").style.visibility = "visible";
+    document.querySelector(".bouton-ajouter").style.display = "none";
+    document.querySelector(".bouton-envoyer").style.display = "flex";
     document.querySelector(".modal-titre").innerHTML = "Ajout photo";
     document.querySelector(".modal-subcontainer-projets").style.display = "none";
     document.querySelector(".modal-form").style.display = "flex";
 });
 
 
+document.querySelector("#titre").addEventListener("change", function(event){
+    isFormComplet()
+})
+document.querySelector("#categorie").addEventListener("change", function(event){
+    isFormComplet()
+})
+document.querySelector("#import").addEventListener("change", function(event){
+    isFormComplet()
+})
+function isFormComplet(){
+    const titre = document.querySelector("#titre").value;
+    const image = document.querySelector("#import").value;
+    const categorie = document.querySelector("#categorie").value;
+    if (titre !=0 & image !=0 & categorie !=0) {
+        document.querySelector(".bouton-envoyer").style.backgroundColor = "#1D6154";
+        document.querySelector("#modal-sumbit").removeAttribute("disabled");
+        console.log(document.querySelector("#modal-sumbit"))
+    }; 
+}
+document.querySelector(".modal-form").addEventListener("submit", function(event){
+    event.preventDefault();
+    console.log("it work");
+})
