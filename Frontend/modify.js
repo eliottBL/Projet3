@@ -11,13 +11,15 @@ function genererGalleryModal(projetsVisbiles){
         const imageElement = document.createElement("img");
             imageElement.src = article.imageUrl
         const containerBoutonElement = document.createElement("div");
+            containerBoutonElement.className = "trash-container";
         const boutonElement = document.createElement("i");
             boutonElement.className = "fa-solid fa-trash-can";
+            boutonElement.dataset.number = [i+1];
         sectionGallery.appendChild(projetElement);
         projetElement.appendChild(imageElement);
         projetElement.appendChild(containerBoutonElement);
         containerBoutonElement.appendChild(boutonElement);
-    }
+    };
 } 
 function opacite50 (){
     const demilum = "brightness(50%)"
@@ -47,6 +49,12 @@ document.querySelector(".bouton-modifier").addEventListener("click", function(ev
     genererGalleryModal(projets);
     document.querySelector("body").ariaHidden = "false";
     opacite50();
+    document.querySelector(".modal-subcontainer-projets").addEventListener("click", function(event){
+        let rang = event.target.dataset.number;
+        if (rang != undefined) {
+            supprimerWork(rang)
+        };
+    });
 });
 document.getElementById("xmark").addEventListener("click", function(event){
     document.querySelector("modal").style.display = "none";
@@ -81,17 +89,28 @@ function isFormComplet(){
     const categorie = document.querySelector("#categorie").value;
     if (titre !=0 & image !=0 & categorie !=0) {
         document.querySelector(".bouton-envoyer").style.backgroundColor = "#1D6154";
+        document.querySelector(".bouton-envoyer").style.cursor = "pointer";
         document.querySelector("#modal-sumbit").removeAttribute("disabled");
         console.log(document.querySelector("#modal-sumbit"))
     }; 
 }
 document.querySelector(".modal-form").addEventListener("submit", function(event){
     event.preventDefault();
-    AjouterWork(event);
+    ajouterWork(event);
 })
 
 
-function AjouterWork (event){
+function supprimerWork (x){
+    const adresse = "http://localhost:5678/api/works/"+ x;
+    console.log(adresse);
+    const supprimer = fetch(adresse, {
+        method: "DELETE",
+        headers: {"accept": "*/*"} 
+    });
+}
+
+
+function ajouterWork (event){
     const formulaireAjout = {
         imageUrl : event.target.querySelector("[name=image]").value,
         title : event.target.querySelector("[name=titre]").value,

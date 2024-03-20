@@ -110,10 +110,11 @@ modal > .modal-container-projets {
 }
 modal > div > .modal-subcontainer-projets {
 	border-bottom: 2px solid #B3B3B3;
+	padding: 5px;
 	display: flex;
 	gap: 7px;
 	flex-wrap: wrap;
-	max-width: 420px;
+	width: auto;
 	padding-bottom: 50px;
 }
 modal > div > .modal-subcontainer-projets > figure {
@@ -138,6 +139,7 @@ modal > div > .modal-subcontainer-projets > figure > div {
 }
 modal > div > .modal-subcontainer-projets > figure > div > i {
 	color: white;
+	cursor: pointer;
 }
 modal > .modal-container-bouton-ajouter {
 	display: flex;
@@ -160,6 +162,7 @@ modal > .modal-container-bouton-ajouter > button{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	cursor: pointer;
 }
 modal > .modal-container-bouton-ajouter > label {
 	background-color:#A7A7A7;
@@ -196,6 +199,7 @@ modal > .modal-container-projets > form > .import-label {
 	align-items: center;
 	background-color: #E8F1F6 ;
 	padding: 20px;
+	cursor: pointer;
 }
 modal > .modal-container-projets > form > .import-label > i {
 	width: 76px;
@@ -296,14 +300,11 @@ nav ul {
 	list-style-type: none;
 
 }
+/* pb !! */
 nav li {
 	padding: 0 10px;
 	font-size: 16px;
 }
-nav span {
-	
-}
-
 
 li:hover {
 	color: #B1663C;
