@@ -1,5 +1,6 @@
 const reponse = await fetch("http://localhost:5678/api/works");
 const projets = await reponse.json();
+console.log(reponse);
 
 function genererGalleryModal(projetsVisbiles){
     document.querySelector(".modal-subcontainer-projets").innerHTML = " ";
@@ -66,13 +67,13 @@ document.querySelector(".bouton-ajouter").addEventListener("click", function(eve
 
 
 document.querySelector("#titre").addEventListener("change", function(event){
-    isFormComplet()
+    isFormComplet();
 })
 document.querySelector("#categorie").addEventListener("change", function(event){
-    isFormComplet()
+    isFormComplet();
 })
 document.querySelector("#import").addEventListener("change", function(event){
-    isFormComplet()
+    isFormComplet();
 })
 function isFormComplet(){
     const titre = document.querySelector("#titre").value;
@@ -86,5 +87,25 @@ function isFormComplet(){
 }
 document.querySelector(".modal-form").addEventListener("submit", function(event){
     event.preventDefault();
-    console.log("it work");
+    AjouterWork(event);
 })
+
+
+function AjouterWork (event){
+    const formulaireAjout = {
+        imageUrl : event.target.querySelector("[name=image]").value,
+        title : event.target.querySelector("[name=titre]").value,
+        categoryId : event.target.querySelector("[name=categorie]").value,
+    };
+    const chargeUtile = JSON.stringify(formulaireAjout);
+    console.log(chargeUtile);
+    const login = fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        headers : {"accept": "application/json", "Content-Type":"multipart/form-data"}, 
+        body: chargeUtile
+        }).then(function(){
+            console.log(login);
+            console.log(projets);  
+        });
+        //.catch       
+}

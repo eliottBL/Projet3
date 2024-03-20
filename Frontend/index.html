@@ -40,23 +40,22 @@
 		<h3 class="modal-titre"></h3>
 		<div class="modal-container-projets">
 			<div class="modal-subcontainer-projets">
-
 			</div>
 			<form class="modal-form">
 				<label class="import-label" for="import">
 					<i class="fa-regular fa-image"></i>
 					<span class="import-titre">+ Ajouter photo</span>
 					<span class="import-sous-titre">jpg, png: 4mo max</span>
-					<input id="import" type="file" accept="jpg, png: 4mo max">					
+					<input id="import" type="file" accept="jpg, png: 4mo max" name="image">					
 				</label>				
 				<label for="titre">Titre</label>
 				<input type="text" name="titre" id="titre">
 				<label for="categorie">Catégorie</label>
-				<select id="categorie">
+				<select id="categorie" name="categorie">
 					<option value=""></option>
-					<option value="objets">Objets</option>
-					<option value="appartements">Appartements</option>
-					<option value="hotels&restaurants">Hotels & restaurants</option>
+					<option value="1">Objets</option>
+					<option value="2">Appartements</option>
+					<option value="3">Hotels & restaurants</option>
 				</select>
 				<input id="modal-sumbit" type="submit" value="Envoyer" disabled>
 			</form>
@@ -82,7 +81,6 @@
 			<div class="title">
 				<h2>Mes Projets</h2>
 				<div class="bouton-modifier">
-	<!-- icone en local ? -->
 					<i class="fa-regular fa-pen-to-square"></i>
 					<span>modifier</span>
 				</div>
