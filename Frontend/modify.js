@@ -58,6 +58,18 @@ function initModal() {
     document.querySelector(".import-label-container").style.visibility = "visible";
     document.querySelector(".import-label-img-container").style.visibility = "hidden";
 }
+function supprimerWork(id) {
+    const url = "http://localhost:5678/api/works/" + id;
+    fetch(url, {
+        method: "DELETE",
+        headers: { "accept": "*/*", "Authorization": "Bearer " + window.sessionStorage.getItem("token") },
+    });
+    fetch("http://localhost:5678/api/works").then(function (response) {
+        return response.json();
+    }).then(function (response) {
+        genererGalleryModal(response);
+    });
+}
 document.querySelector(".bouton-modifier").addEventListener("click", function (event) {
     initModal();
     document.querySelector("modal").style.display = "flex";
@@ -73,6 +85,9 @@ document.getElementById("xmark").addEventListener("click", function (event) {
     document.querySelector("modal").style.display = "none";
     document.querySelector("body").ariaHidden = "true";
     opacite100();
+    window.location.replace("index.html");
+    // ou relancer un refresh fetch 
+
 });
 document.getElementById("retour").addEventListener("click", function (event) {
     initModal();
@@ -115,19 +130,6 @@ document.querySelector(".modal-form").addEventListener("submit", function (event
     ajouterWork(event);
 })
 
-
-async function supprimerWork(id) {
-    const url = "http://localhost:5678/api/works/" + id;
-    await fetch(url, {
-        method: "DELETE",
-        headers: { "accept": "*/*", "Authorization": "Bearer " + window.sessionStorage.getItem("token") },
-    });
-    // refresh api 
-    // supp article id DOM
-}
-
-
-
 function ajouterWork(event) {
     const formulaireAjout = {
         image: event.target.querySelector("[name=image]").value,
@@ -141,7 +143,7 @@ function ajouterWork(event) {
         headers: { "accept": "application/json", "Content-Type": "multipart/form-data", "Authorization": "Bearer " + window.sessionStorage.getItem("token") },
         body: chargeUtile
     }).then(function (response) {
-        console.log(reponse);
+        console.log(response);
     });
     //.catch       
 }

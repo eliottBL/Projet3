@@ -39,6 +39,3 @@ document.querySelector(".filter-bar").addEventListener("click", function(event){
         filtrerProjets(projets, categoryName);
     }
 })
-document.querySelector("#login").addEventListener("click", function (event){
-    window.location.replace("index.html");
-})

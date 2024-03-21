@@ -6,10 +6,13 @@ function genUserMode() {
     modeEdition.style.display = "flex";
     document.querySelector(".filter-bar").style.visibility = "hidden";
 }
-function isConnected (){
+function isConnected() {
     let status = window.sessionStorage.getItem("token");
     status && genUserMode();
-    }
+}
 
 //Process
 isConnected()
+document.querySelector("#login").addEventListener("click", function(event){
+    window.sessionStorage.removeItem("token");
+})
