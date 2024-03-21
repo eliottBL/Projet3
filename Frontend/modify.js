@@ -1,70 +1,83 @@
 const reponse = await fetch("http://localhost:5678/api/works");
 const projets = await reponse.json();
+const preview = () => {
+    const file = document.querySelector("#import").files;
+    if (file) {
+        const fileReader = new FileReader();
+        const preview = document.getElementById('preview');
+        fileReader.onload = event => {
+            preview.setAttribute('src', event.target.result);
+        };
+        fileReader.readAsDataURL(file[0]);
+    };
+    document.querySelector(".import-label-container").style.visibility = "hidden";
+    document.querySelector(".import-label-img-container").style.visibility = "visible";
+};
 console.log(reponse);
 
-function genererGalleryModal(projetsVisbiles){
+function genererGalleryModal(projetsVisbiles) {
     document.querySelector(".modal-subcontainer-projets").innerHTML = " ";
     for (let i = 0; i < projetsVisbiles.length; i++) {
         const article = projetsVisbiles[i];
         const sectionGallery = document.querySelector(".modal-subcontainer-projets");
         const projetElement = document.createElement("figure");
         const imageElement = document.createElement("img");
-            imageElement.src = article.imageUrl
+        imageElement.src = article.imageUrl
         const containerBoutonElement = document.createElement("div");
-            containerBoutonElement.className = "trash-container";
+        containerBoutonElement.className = "trash-container";
         const boutonElement = document.createElement("i");
-            boutonElement.className = "fa-solid fa-trash-can";
-            boutonElement.dataset.number = [i+1];
+        boutonElement.className = "fa-solid fa-trash-can";
+        boutonElement.dataset.number = article.id;
         sectionGallery.appendChild(projetElement);
         projetElement.appendChild(imageElement);
         projetElement.appendChild(containerBoutonElement);
         containerBoutonElement.appendChild(boutonElement);
     };
-} 
-function opacite50 (){
+}
+function opacite50() {
     const demilum = "brightness(50%)"
     document.querySelector("body").style.backgroundColor = "grey";
     document.querySelector("header").style.filter = demilum;
     document.querySelector("main").style.filter = demilum;
     document.querySelector("footer").style.filter = demilum;
 }
-function opacite100(){
+function opacite100() {
     const lum = "brightness(100%)"
     document.querySelector("body").style.backgroundColor = "white";
     document.querySelector("header").style.filter = lum;
     document.querySelector("main").style.filter = lum;
     document.querySelector("footer").style.filter = lum;
 }
-function initModal(){
+function initModal() {
     document.querySelector("#retour").style.visibility = "hidden";
     document.querySelector(".bouton-ajouter").style.display = "flex";
-    document.querySelector(".bouton-envoyer").style.display = "none";  
+    document.querySelector(".bouton-envoyer").style.display = "none";
     document.querySelector(".modal-form").style.display = "none";
     document.querySelector(".modal-titre").innerHTML = "Galerie photo";
     document.querySelector(".modal-subcontainer-projets").style.display = "flex";
+    document.querySelector(".import-label-container").style.visibility = "visible";
+    document.querySelector(".import-label-img-container").style.visibility = "hidden";
 }
-document.querySelector(".bouton-modifier").addEventListener("click", function(event){
+document.querySelector(".bouton-modifier").addEventListener("click", function (event) {
     initModal();
     document.querySelector("modal").style.display = "flex";
     genererGalleryModal(projets);
     document.querySelector("body").ariaHidden = "false";
     opacite50();
-    document.querySelector(".modal-subcontainer-projets").addEventListener("click", function(event){
+    document.querySelector(".modal-subcontainer-projets").addEventListener("click", function (event) {
         let rang = event.target.dataset.number;
-        if (rang != undefined) {
-            supprimerWork(rang)
-        };
+        rang && supprimerWork(rang);
     });
 });
-document.getElementById("xmark").addEventListener("click", function(event){
+document.getElementById("xmark").addEventListener("click", function (event) {
     document.querySelector("modal").style.display = "none";
     document.querySelector("body").ariaHidden = "true";
     opacite100();
 });
-document.getElementById("retour").addEventListener("click", function(event){
-        initModal();   
+document.getElementById("retour").addEventListener("click", function (event) {
+    initModal();
 });
-document.querySelector(".bouton-ajouter").addEventListener("click", function(event){
+document.querySelector(".bouton-ajouter").addEventListener("click", function (event) {
     document.querySelector("#retour").style.visibility = "visible";
     document.querySelector(".bouton-ajouter").style.display = "none";
     document.querySelector(".bouton-envoyer").style.display = "flex";
@@ -73,58 +86,62 @@ document.querySelector(".bouton-ajouter").addEventListener("click", function(eve
     document.querySelector(".modal-form").style.display = "flex";
 });
 
-
-document.querySelector("#titre").addEventListener("change", function(event){
-    isFormComplet();
-})
-document.querySelector("#categorie").addEventListener("change", function(event){
-    isFormComplet();
-})
-document.querySelector("#import").addEventListener("change", function(event){
-    isFormComplet();
-})
-function isFormComplet(){
+function isFormComplet() {
     const titre = document.querySelector("#titre").value;
     const image = document.querySelector("#import").value;
     const categorie = document.querySelector("#categorie").value;
-    if (titre !=0 & image !=0 & categorie !=0) {
+    if (titre != 0 & image != 0 & categorie != 0) {
         document.querySelector(".bouton-envoyer").style.backgroundColor = "#1D6154";
         document.querySelector(".bouton-envoyer").style.cursor = "pointer";
         document.querySelector("#modal-sumbit").removeAttribute("disabled");
         console.log(document.querySelector("#modal-sumbit"))
-    }; 
+    };
 }
-document.querySelector(".modal-form").addEventListener("submit", function(event){
+document.querySelector("#titre").addEventListener("change", function (event) {
+    isFormComplet();
+})
+document.querySelector("#categorie").addEventListener("change", function (event) {
+    isFormComplet();
+})
+document.querySelector("#import").addEventListener("change", function (event) {
+    isFormComplet();
+})
+document.querySelector("#import").addEventListener('change', preview);
+
+
+
+document.querySelector(".modal-form").addEventListener("submit", function (event) {
     event.preventDefault();
     ajouterWork(event);
 })
 
 
-function supprimerWork (x){
-    const adresse = "http://localhost:5678/api/works/"+ x;
-    console.log(adresse);
-    const supprimer = fetch(adresse, {
+async function supprimerWork(id) {
+    const url = "http://localhost:5678/api/works/" + id;
+    await fetch(url, {
         method: "DELETE",
-        headers: {"accept": "*/*"} 
+        headers: { "accept": "*/*", "Authorization": "Bearer " + window.sessionStorage.getItem("token") },
     });
+    // refresh api 
+    // supp article id DOM
 }
 
 
-function ajouterWork (event){
+
+function ajouterWork(event) {
     const formulaireAjout = {
-        imageUrl : event.target.querySelector("[name=image]").value,
-        title : event.target.querySelector("[name=titre]").value,
-        categoryId : event.target.querySelector("[name=categorie]").value,
+        image: event.target.querySelector("[name=image]").value,
+        title: event.target.querySelector("[name=titre]").value,
+        category: event.target.querySelector("[name=categorie]").value
     };
     const chargeUtile = JSON.stringify(formulaireAjout);
     console.log(chargeUtile);
-    const login = fetch("http://localhost:5678/api/works", {
+    fetch("http://localhost:5678/api/works", {
         method: "POST",
-        headers : {"accept": "application/json", "Content-Type":"multipart/form-data"}, 
+        headers: { "accept": "application/json", "Content-Type": "multipart/form-data", "Authorization": "Bearer " + window.sessionStorage.getItem("token") },
         body: chargeUtile
-        }).then(function(){
-            console.log(login);
-            console.log(projets);  
-        });
-        //.catch       
+    }).then(function (response) {
+        console.log(reponse);
+    });
+    //.catch       
 }

@@ -40,6 +40,5 @@ document.querySelector(".filter-bar").addEventListener("click", function(event){
     }
 })
 document.querySelector("#login").addEventListener("click", function (event){
-    window.sessionStorage.setItem("status", "offline");
     window.location.replace("index.html");
 })

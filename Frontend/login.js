@@ -1,36 +1,26 @@
-function SaveAndTestToken(x) {
-    if (x == 200){
-        window.sessionStorage.setItem("status","online")
-        console.log(sessionStorage)
-        window.location.replace("index.html");
-    } else {
-        window.sessionStorage.setItem("status","offline")
-        alert("Erreur dans l’identifiant ou le mot de passe") 
-    }
-}
-
-async function getResponse(event) {
+function getResponse(event) {
     const connexion = {
         email: event.target.querySelector("[name=email]").value,
         password: event.target.querySelector("[name=password]").value
     };
     const chargeUtile = JSON.stringify(connexion);
-
-    /* let login = fetch("http://localhost:5678/api/users/login", {
+    fetch("http://localhost:5678/api/users/login", {
         method: "POST",
-        headers : {"accept": "application/json", "Content-Type":"application/json"}, 
+        headers: { "accept": "application/json", "Content-Type": "application/json" },
         body: chargeUtile
-       }).then(SaveAndTestToken(login.status));
-       
-    }; */
-
-    const login = await fetch("http://localhost:5678/api/users/login", {
-        method: "POST",
-        headers : {"accept": "application/json", "Content-Type":"application/json"}, 
-        body: chargeUtile
-        });
-    SaveAndTestToken(login.status); 
-    };
+    }).then(function (response) {
+        return response.json();
+    }).then(function (response) {
+        if (response.token) {
+            window.sessionStorage.setItem("token", response.token);
+            window.location.replace("index.html");
+        } else {
+            alert("Erreur dans l’identifiant ou le mot de passe");
+        }
+    }).catch(function () {
+        alert("erreur survenue");
+    });
+};
 
 //PROCESS 
 const formulaireConnexion = document.querySelector(".connexion");

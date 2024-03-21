@@ -110,12 +110,11 @@ modal > .modal-container-projets {
 }
 modal > div > .modal-subcontainer-projets {
 	border-bottom: 2px solid #B3B3B3;
-	padding: 5px;
 	display: flex;
-	gap: 7px;
+	gap: 10px;
 	flex-wrap: wrap;
-	width: auto;
 	padding-bottom: 50px;
+	max-width: 420px;
 }
 modal > div > .modal-subcontainer-projets > figure {
 	margin-bottom: 20px;
@@ -196,33 +195,50 @@ modal > .modal-container-projets > form > button {
 modal > .modal-container-projets > form > .import-label {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	align-items: center;
 	background-color: #E8F1F6 ;
+}
+modal > .modal-container-projets > form > .import-label > div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	padding: 20px;
 	cursor: pointer;
 }
-modal > .modal-container-projets > form > .import-label > i {
+modal > .modal-container-projets > form > .import-label > .import-label-img-container {
+	position: absolute;
+	display: flex;
+	align-items: center;
+}
+
+modal > .modal-container-projets > form > .import-label > div > i {
 	width: 76px;
 	height: 76px;
 	color:  #CBD6DC;
 	border: #306685 2px solid;
+	z-index: 1;
 }
-modal > .modal-container-projets > form > .import-label > .import-titre{
+modal > .modal-container-projets > form > .import-label > div > .import-titre{
 	background-color: #CBD6DC ;
 	color: #306685;
 	padding: 10px;
 	margin-top: 10px;
 	border-radius: 50px;
 	text-align: center;
-	width: 50%;
+	width: 100%;
 }
-modal > .modal-container-projets > form > .import-label > .import-sous-titre{
+modal > .modal-container-projets > form > .import-label > div > .import-sous-titre{
 	font-size: 10px;
 	padding: 10px;	
 }
-modal > .modal-container-projets > form > .import-label > #import{
+modal > .modal-container-projets > form > .import-label > div>  #import{
 	display: none;
 }
+modal > .modal-container-projets > form > .import-label > div > img{
+	max-width: 129px;
+}
+
 modal > .modal-container-projets > form > input {
 	height: 50px;
 	font-size: 1.2em;
@@ -304,6 +320,9 @@ nav ul {
 nav li {
 	padding: 0 10px;
 	font-size: 16px;
+}
+nav li span {
+	font-weight: 700;
 }
 
 li:hover {
