@@ -213,10 +213,8 @@ modal > .modal-container-projets > form > .import-label > .import-label-img-cont
 }
 
 modal > .modal-container-projets > form > .import-label > div > i {
-	width: 76px;
-	height: 76px;
+	font-size: 76px;/*!!!*/
 	color:  #CBD6DC;
-	border: #306685 2px solid;
 	z-index: 1;
 }
 modal > .modal-container-projets > form > .import-label > div > .import-titre{
@@ -316,7 +314,6 @@ nav ul {
 	list-style-type: none;
 
 }
-/* pb !! */
 nav li {
 	padding: 0 10px;
 	font-size: 16px;

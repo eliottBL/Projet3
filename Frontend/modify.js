@@ -13,8 +13,6 @@ const preview = () => {
     document.querySelector(".import-label-container").style.visibility = "hidden";
     document.querySelector(".import-label-img-container").style.visibility = "visible";
 };
-console.log(reponse);
-
 function genererGalleryModal(projetsVisbiles) {
     document.querySelector(".modal-subcontainer-projets").innerHTML = " ";
     for (let i = 0; i < projetsVisbiles.length; i++) {
@@ -131,19 +129,24 @@ document.querySelector(".modal-form").addEventListener("submit", function (event
 })
 
 function ajouterWork(event) {
-    const formulaireAjout = {
-        image: event.target.querySelector("[name=image]").value,
-        title: event.target.querySelector("[name=titre]").value,
-        category: event.target.querySelector("[name=categorie]").value
-    };
-    const chargeUtile = JSON.stringify(formulaireAjout);
-    console.log(chargeUtile);
+    const form = new FormData
+    form.append("image", event.target.querySelector("[name=image]").files[0]);
+    form.append("title", event.target.querySelector("[name=titre]").value);
+    form.append("category", event.target.querySelector("[name=categorie]").value);
     fetch("http://localhost:5678/api/works", {
         method: "POST",
-        headers: { "accept": "application/json", "Content-Type": "multipart/form-data", "Authorization": "Bearer " + window.sessionStorage.getItem("token") },
-        body: chargeUtile
+        headers: { "accept": "application/json", "Authorization": "Bearer " + window.sessionStorage.getItem("token") },
+        body: form
     }).then(function (response) {
         console.log(response);
+    }).then(function () {
+        initModal();
+        fetch("http://localhost:5678/api/works").then(function (response) {
+            return response.json();
+        }).then(function (response) {
+            genererGalleryModal(response);
+        });
+    }).catch(function () {
+        alert("Erreur contenue ou communication API")
     });
-    //.catch       
 }
