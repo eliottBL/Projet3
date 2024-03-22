@@ -106,11 +106,19 @@ function supprimerWork(id) {
         genererGalleryModal(response);
     });
 }
+function fermerModal() {
+}
+document.addEventListener("click", function (event) {
+    const modal = document.querySelector("modal");
+    if (!modal.contains(event.target) && modal.style.display == "flex") {
+        console.log("clic modal");
+    }
+});
 document.querySelector(".bouton-modifier").addEventListener("click", function (event) {
     initModal();
     document.querySelector("modal").style.display = "flex";
     genererGalleryModal(projets);
-    document.querySelector("body").ariaHidden = "false";
+    document.querySelector("body").ariaHidden = "true";
     opacite50();
     document.querySelector(".modal-subcontainer-projets").addEventListener("click", function (event) {
         let rang = event.target.dataset.number;
@@ -119,11 +127,9 @@ document.querySelector(".bouton-modifier").addEventListener("click", function (e
 });
 document.getElementById("xmark").addEventListener("click", function (event) {
     document.querySelector("modal").style.display = "none";
-    document.querySelector("body").ariaHidden = "true";
+    document.querySelector("body").ariaHidden = "false";
     opacite100();
     window.location.replace("index.html");
-    // ou relancer un refresh fetch 
-
 });
 document.getElementById("retour").addEventListener("click", function (event) {
     initModal();
