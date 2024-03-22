@@ -178,7 +178,6 @@ modal {
 modal>.modal-container-bouton-fermer {
 	display: flex;
 	justify-content: space-between;
-	border: 2px solid blue;
 }
 
 modal>.modal-container-bouton-fermer>i:hover {
@@ -382,7 +381,6 @@ modal>.modal-container-projets>form>label {
 	align-items: center;
 	padding-bottom: 0;
 	gap: 5px;
-	border: 2px solid blueviolet;
 	margin-left: 3%;
 }
 
@@ -478,7 +476,6 @@ li:hover {
 	display: flex;
 	justify-content: center;
 	gap: 7px;
-	border: 2px solid blue;
 	margin-bottom: 3em;
 }
 
