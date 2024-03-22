@@ -13,6 +13,8 @@ function isConnected() {
 
 //Process
 isConnected()
-document.querySelector("#login").addEventListener("click", function(event){
+document.querySelector("#login").addEventListener("click", function (event) {
     window.sessionStorage.removeItem("token");
+    location.reload("index.html");
+
 })

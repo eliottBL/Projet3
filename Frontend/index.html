@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Sophie Bluel - Architecte d'intérieur</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+		rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+		integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="./assets/style.css">
-	<script type="module" src="user-mode.js"></script>
-	<script type="module" src="gen-filter-gen-projets.js"></script>
 	<script type="module" src="modify.js"></script>
+	<script type="module" src="user-mode.js"></script>
 </head>
+
 <body>
 	<div class="mode-edition">
 		<i class="fa-regular fa-pen-to-square"></i>
-	<span>Mode édition</span>
+		<span>Mode édition</span>
 	</div>
 	<header>
 		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
@@ -44,15 +46,15 @@
 			<form class="modal-form">
 				<label class="import-label" for="import">
 					<div class="import-label-container">
-					<i class="fa-regular fa-image"></i>
-					<span class="import-titre">+ Ajouter photo</span>
-					<span class="import-sous-titre">jpg, png: 4mo max</span>
-					<input id="import" type="file" accept=".jpg, .png" name="image">
+						<i class="fa-regular fa-image"></i>
+						<span class="import-titre">+ Ajouter photo</span>
+						<span class="import-sous-titre">jpg, png: 4mo max</span>
+						<input id="import" type="file" accept=".jpg, .png" name="image">
 					</div>
 					<div class="import-label-img-container">
-					<img src="#" id="preview">		
-					</div>		
-				</label>				
+						<img src="#" id="preview">
+					</div>
+				</label>
 				<label for="titre">Titre</label>
 				<input type="text" name="titre" id="titre">
 				<label for="categorie">Catégorie</label>
@@ -77,9 +79,13 @@
 			</figure>
 			<article>
 				<h2>Designer d'espace</h2>
-				<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
-				<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
-				<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
+				<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison
+					finale du chantier.</p>
+				<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les
+					couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du
+					chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
+				<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG,
+					décorateur(trice)</p>
 			</article>
 		</section>
 		<section id="portfolio">
@@ -89,14 +95,14 @@
 					<i class="fa-regular fa-pen-to-square"></i>
 					<span>modifier</span>
 				</div>
-			</div> 
+			</div>
 			<div class="filter-bar">
 				<button data-category="tous">Tous</button>
 				<button data-category="Objets">Objets</button>
 				<button data-category="Appartements">Appartements</button>
 				<button data-category="Hotels & restaurants">Hotels & restaurants</button>
 			</div>
-			
+
 			<div class="gallery"></div>
 		</section>
 		<section class="formulaire">
@@ -121,4 +127,5 @@
 		</nav>
 	</footer>
 </body>
+
 </html>

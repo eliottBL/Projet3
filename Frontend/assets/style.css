@@ -3,19 +3,87 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -23,33 +91,53 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
 	display: block;
 }
+
 body {
 	line-height: 1;
 }
-ol, ul {
+
+ol,
+ul {
 	list-style: none;
 }
-blockquote, q {
+
+blockquote,
+q {
 	quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
 /** end reset css**/
 body {
 	max-width: 1140px;
-	margin:auto;
+	margin: auto;
 	font-family: 'Work Sans';
 	font-size: 14px;
 	height: 100vh;
@@ -86,29 +174,35 @@ modal {
 	border-radius: 10px;
 	background-color: #FFFFFF;
 }
-modal > .modal-container-bouton-fermer {
+
+modal>.modal-container-bouton-fermer {
 	display: flex;
 	justify-content: space-between;
 	border: 2px solid blue;
 }
-modal > .modal-container-bouton-fermer > i:hover {
+
+modal>.modal-container-bouton-fermer>i:hover {
 	cursor: pointer;
 }
-modal > .modal-container-bouton-fermer > #retour {
+
+modal>.modal-container-bouton-fermer>#retour {
 	visibility: hidden;
 }
-modal > h3 {
+
+modal>h3 {
 	text-align: center;
 	font-size: 26px;
 	font-weight: 400;
 	margin-bottom: 40px;
 	margin-top: 20px;
 }
-modal > .modal-container-projets {
+
+modal>.modal-container-projets {
 	display: flex;
 	justify-content: center;
 }
-modal > div > .modal-subcontainer-projets {
+
+modal>div>.modal-subcontainer-projets {
 	border-bottom: 2px solid #B3B3B3;
 	display: flex;
 	gap: 10px;
@@ -116,14 +210,17 @@ modal > div > .modal-subcontainer-projets {
 	padding-bottom: 50px;
 	max-width: 420px;
 }
-modal > div > .modal-subcontainer-projets > figure {
+
+modal>div>.modal-subcontainer-projets>figure {
 	margin-bottom: 20px;
 	width: 76px;
 }
-modal > div > .modal-subcontainer-projets > figure > img {
+
+modal>div>.modal-subcontainer-projets>figure>img {
 	width: 77px;
 }
-modal > div > .modal-subcontainer-projets > figure > div {
+
+modal>div>.modal-subcontainer-projets>figure>div {
 	position: absolute;
 	display: flex;
 	justify-content: center;
@@ -136,23 +233,26 @@ modal > div > .modal-subcontainer-projets > figure > div {
 	margin-left: 50px;
 	margin-top: -100px;
 }
-modal > div > .modal-subcontainer-projets > figure > div > i {
+
+modal>div>.modal-subcontainer-projets>figure>div>i {
 	color: white;
 	cursor: pointer;
 }
-modal > .modal-container-bouton-ajouter {
+
+modal>.modal-container-bouton-ajouter {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
-modal > .modal-container-bouton-ajouter > button{
+
+modal>.modal-container-bouton-ajouter>button {
 	font-family: 'Syne';
 	font-size: 16px;
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
-	margin : 2em auto ;
+	margin: 2em auto;
 	width: 180px;
 	text-align: center;
 	border-radius: 60px;
@@ -163,8 +263,9 @@ modal > .modal-container-bouton-ajouter > button{
 	align-items: center;
 	cursor: pointer;
 }
-modal > .modal-container-bouton-ajouter > label {
-	background-color:#A7A7A7;
+
+modal>.modal-container-bouton-ajouter>label {
+	background-color: #A7A7A7;
 	font-family: 'Syne';
 	font-size: 16px;
 	font-weight: 700;
@@ -175,11 +276,12 @@ modal > .modal-container-bouton-ajouter > label {
 	width: 180px;
 	text-align: center;
 	height: 50px;
-	margin : 2em auto;
+	margin: 2em auto;
 	border-radius: 60px;
 	display: none;
 }
-modal > .modal-container-projets > form {
+
+modal>.modal-container-projets>form {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -187,38 +289,44 @@ modal > .modal-container-projets > form {
 	border-bottom: 2px solid #B3B3B3;
 	width: 420px;
 }
-modal > .modal-container-projets > form > button {
+
+modal>.modal-container-projets>form>button {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 }
-modal > .modal-container-projets > form > .import-label {
+
+modal>.modal-container-projets>form>.import-label {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-color: #E8F1F6 ;
+	background-color: #E8F1F6;
 }
-modal > .modal-container-projets > form > .import-label > div {
+
+modal>.modal-container-projets>form>.import-label>div {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	padding: 20px;
 	cursor: pointer;
 }
-modal > .modal-container-projets > form > .import-label > .import-label-img-container {
+
+modal>.modal-container-projets>form>.import-label>.import-label-img-container {
 	position: absolute;
 	display: flex;
 	align-items: center;
 }
 
-modal > .modal-container-projets > form > .import-label > div > i {
-	font-size: 76px;/*!!!*/
-	color:  #CBD6DC;
+modal>.modal-container-projets>form>.import-label>div>i {
+	font-size: 76px;
+	/*!!!*/
+	color: #CBD6DC;
 	z-index: 1;
 }
-modal > .modal-container-projets > form > .import-label > div > .import-titre{
-	background-color: #CBD6DC ;
+
+modal>.modal-container-projets>form>.import-label>div>.import-titre {
+	background-color: #CBD6DC;
 	color: #306685;
 	padding: 10px;
 	margin-top: 10px;
@@ -226,34 +334,39 @@ modal > .modal-container-projets > form > .import-label > div > .import-titre{
 	text-align: center;
 	width: 100%;
 }
-modal > .modal-container-projets > form > .import-label > div > .import-sous-titre{
+
+modal>.modal-container-projets>form>.import-label>div>.import-sous-titre {
 	font-size: 10px;
-	padding: 10px;	
+	padding: 10px;
 }
-modal > .modal-container-projets > form > .import-label > div>  #import{
+
+modal>.modal-container-projets>form>.import-label>div>#import {
 	display: none;
 }
-modal > .modal-container-projets > form > .import-label > div > img{
+
+modal>.modal-container-projets>form>.import-label>div>img {
 	max-width: 129px;
 }
 
-modal > .modal-container-projets > form > input {
+modal>.modal-container-projets>form>input {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-modal > .modal-container-projets > form > select {
+
+modal>.modal-container-projets>form>select {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-modal > .modal-container-projets > form > #modal-sumbit {
+
+modal>.modal-container-projets>form>#modal-sumbit {
 	display: none;
 }
 
-modal > .modal-container-projets > form > label {
+modal>.modal-container-projets>form>label {
 	margin: 2em 0 1em 0;
 }
 
@@ -266,12 +379,13 @@ modal > .modal-container-projets > form > label {
 
 .bouton-modifier {
 	display: none;
-	align-items: center;	
+	align-items: center;
 	padding-bottom: 0;
 	gap: 5px;
 	border: 2px solid blueviolet;
 	margin-left: 3%;
 }
+
 .bouton-modifier:hover {
 	cursor: pointer;
 }
@@ -280,7 +394,7 @@ section {
 	margin: 50px 0
 }
 
-h1{
+h1 {
 	display: flex;
 	flex-direction: column;
 	font-family: 'Syne';
@@ -289,21 +403,21 @@ h1{
 	color: #B1663C
 }
 
-h1 > span {
+h1>span {
 	font-family: 'Work Sans';
-	font-size:10px;
+	font-size: 10px;
 	letter-spacing: 0.1em;
-;
+	;
 }
 
-h2{
+h2 {
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
 	color: #1D6154;
 }
 
-a{
+a {
 	text-decoration: none;
 	color: inherit;
 }
@@ -314,10 +428,12 @@ nav ul {
 	list-style-type: none;
 
 }
+
 nav li {
 	padding: 0 10px;
 	font-size: 16px;
 }
+
 nav li span {
 	font-weight: 700;
 }
@@ -331,9 +447,11 @@ li:hover {
 	display: flex;
 	align-items: center;
 }
+
 #introduction figure {
 	flex: 1
 }
+
 #introduction img {
 	display: block;
 	margin: auto;
@@ -343,6 +461,7 @@ li:hover {
 #introduction article {
 	flex: 1
 }
+
 #introduction h2 {
 	margin-bottom: 1em;
 }
@@ -350,6 +469,7 @@ li:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
+
 #portfolio h2 {
 	text-align: center;
 }
@@ -372,11 +492,13 @@ li:hover {
 	background-color: white;
 	padding: 13px;
 }
+
 .filter-bar button:hover {
 	background-color: #1D6154;
 	color: white;
 	cursor: pointer;
 }
+
 .filter-bar button:active {
 	background-color: #1D6154;
 	color: white;
@@ -395,19 +517,23 @@ li:hover {
 	width: 100%;
 
 }
+
 .formulaire {
 	width: 50%;
-margin: auto;
+	margin: auto;
 }
-.formulaire > * {
+
+.formulaire>* {
 	text-align: center;
 }
-.formulaire h2{
+
+.formulaire h2 {
 	margin-bottom: 20px;
 }
+
 .formulaire form {
 	text-align: left;
-	margin-top:30px;
+	margin-top: 30px;
 	display: flex;
 	flex-direction: column;
 }
@@ -418,27 +544,30 @@ margin: auto;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+
 .formulaire label {
 	margin: 2em 0 1em 0;
 }
+
 .formulaire textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+
 .formulaire span {
-	margin:auto;
+	margin: auto;
 	text-decoration: underline;
 }
 
-input[type="submit"]{
+input[type="submit"] {
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
-	margin : 2em auto ;
+	margin: 2em auto;
 	width: 180px;
 	text-align: center;
-	border-radius: 60px ;
+	border-radius: 60px;
 }
 
 footer {

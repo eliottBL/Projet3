@@ -13,6 +13,44 @@ const preview = () => {
     document.querySelector(".import-label-container").style.visibility = "hidden";
     document.querySelector(".import-label-img-container").style.visibility = "visible";
 };
+
+function genererArticles(projetsVisbiles) {
+    document.querySelector(".gallery").innerHTML = " ";
+    for (let i = 0; i < projetsVisbiles.length; i++) {
+        const article = projetsVisbiles[i];
+        const sectionGallery = document.querySelector(".gallery");
+        const projetElement = document.createElement("figure");
+        const imageElement = document.createElement("img");
+        imageElement.src = article.imageUrl
+        const nomElement = document.createElement("figcaptation");
+        nomElement.innerText = article.title;
+        sectionGallery.appendChild(projetElement)
+        projetElement.appendChild(imageElement);
+        projetElement.appendChild(nomElement);
+    }
+}
+genererArticles(projets);
+
+function filtrerProjets(projets, y) {
+    // projetsFiltres = projets.filter(function(projets){
+    //     //console.log(i)
+    //     return projets.categoryId === i;
+    // });
+    // projetsVisbiles = projetsFiltres;
+    let projetsFiltres = projets.filter(function (projets) {
+        return projets.category.name === y;
+    });
+    genererArticles(projetsFiltres)
+}
+document.querySelector(".filter-bar").addEventListener("click", function (event) {
+    let categoryName = event.target.dataset.category
+    if (categoryName == "tous") {
+        genererArticles(projets);
+    } else {
+        filtrerProjets(projets, categoryName);
+    }
+})
+
 function genererGalleryModal(projetsVisbiles) {
     document.querySelector(".modal-subcontainer-projets").innerHTML = " ";
     for (let i = 0; i < projetsVisbiles.length; i++) {
@@ -107,7 +145,6 @@ function isFormComplet() {
         document.querySelector(".bouton-envoyer").style.backgroundColor = "#1D6154";
         document.querySelector(".bouton-envoyer").style.cursor = "pointer";
         document.querySelector("#modal-sumbit").removeAttribute("disabled");
-        console.log(document.querySelector("#modal-sumbit"))
     };
 }
 document.querySelector("#titre").addEventListener("change", function (event) {
@@ -120,8 +157,6 @@ document.querySelector("#import").addEventListener("change", function (event) {
     isFormComplet();
 })
 document.querySelector("#import").addEventListener('change', preview);
-
-
 
 document.querySelector(".modal-form").addEventListener("submit", function (event) {
     event.preventDefault();
