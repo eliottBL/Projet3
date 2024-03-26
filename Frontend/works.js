@@ -107,11 +107,23 @@ function supprimerWork(id) {
     });
 }
 function fermerModal() {
+    document.querySelector("modal").style.display = "none";
+    document.querySelector("body").ariaHidden = "false";
+    opacite100();
+    fetch("http://localhost:5678/api/works").then(function (response) {
+        return response.json();
+    }).then(function (response) {
+        genererArticles(response);
+    }).catch(function () {
+        alert("Erreur contenue ou communication API")
+    });
 }
+
 document.addEventListener("click", function (event) {
     const modal = document.querySelector("modal");
-    if (!modal.contains(event.target) && modal.style.display == "flex") {
-        console.log("clic modal");
+    const boutonModifier = document.querySelector(".bouton-modifier");
+    if (!modal.contains(event.target) && modal.style.display == "flex" && !boutonModifier.contains(event.target)) {
+        fermerModal();
     }
 });
 document.querySelector(".bouton-modifier").addEventListener("click", function (event) {
@@ -126,10 +138,7 @@ document.querySelector(".bouton-modifier").addEventListener("click", function (e
     });
 });
 document.getElementById("xmark").addEventListener("click", function (event) {
-    document.querySelector("modal").style.display = "none";
-    document.querySelector("body").ariaHidden = "false";
-    opacite100();
-    window.location.replace("index.html");
+    fermerModal();
 });
 document.getElementById("retour").addEventListener("click", function (event) {
     initModal();
