@@ -22,7 +22,6 @@ function getResponse(event) {
     });
 };
 
-//PROCESS 
 const formulaireConnexion = document.querySelector(".connexion");
 formulaireConnexion.addEventListener("submit", function (event) {
     event.preventDefault();

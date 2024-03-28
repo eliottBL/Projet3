@@ -31,14 +31,9 @@ function genererArticles(projetsVisbiles) {
 }
 genererArticles(projets);
 
-function filtrerProjets(projets, y) {
-    // projetsFiltres = projets.filter(function(projets){
-    //     //console.log(i)
-    //     return projets.categoryId === i;
-    // });
-    // projetsVisbiles = projetsFiltres;
+function filtrerProjets(projets, category) {
     let projetsFiltres = projets.filter(function (projets) {
-        return projets.category.name === y;
+        return projets.category.name === category;
     });
     genererArticles(projetsFiltres)
 }
@@ -110,11 +105,11 @@ function fermerModal() {
     document.querySelector("modal").style.display = "none";
     document.querySelector("body").ariaHidden = "false";
     opacite100();
-    fetch("http://localhost:5678/api/works").then(function (response) {
-        return response.json();
-    }).then(function (response) {
+    fetch("http://localhost:5678/api/works").then(response =>
+        response.json()
+    ).then(response => {
         genererArticles(response);
-    }).catch(function () {
+    }).catch(() => {
         alert("Erreur contenue ou communication API")
     });
 }
@@ -177,7 +172,6 @@ document.querySelector(".modal-form").addEventListener("submit", function (event
     event.preventDefault();
     ajouterWork(event);
 })
-
 function ajouterWork(event) {
     const form = new FormData
     form.append("image", event.target.querySelector("[name=image]").files[0]);
@@ -187,13 +181,11 @@ function ajouterWork(event) {
         method: "POST",
         headers: { "accept": "application/json", "Authorization": "Bearer " + window.sessionStorage.getItem("token") },
         body: form
-    }).then(function (response) {
-        console.log(response);
     }).then(function () {
         initModal();
-        fetch("http://localhost:5678/api/works").then(function (response) {
-            return response.json();
-        }).then(function (response) {
+        fetch("http://localhost:5678/api/works").then(response =>
+            response.json()
+        ).then(function (response) {
             genererGalleryModal(response);
         });
     }).catch(function () {

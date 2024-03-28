@@ -2,7 +2,6 @@ function isConnected() {
     let status = window.sessionStorage.getItem("token");
     status && genUserMode();
 }
-
 function genUserMode() {
     document.querySelector("#login").innerHTML = "logout";
     document.querySelector("#login").id = "logout";
@@ -13,7 +12,6 @@ function genUserMode() {
     document.querySelector(".filter-bar").style.visibility = "hidden";
 }
 
-//Process
 isConnected()
 if (document.querySelector("#logout")) {
     document.querySelector("#logout").addEventListener("click", function (event) {
