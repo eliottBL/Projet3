@@ -1,30 +1,37 @@
-/*const reponse = await fetch("http://localhost:5678/api/works");
-const projets = await reponse.json();*/
-fetch("http://localhost:5678/api/works")
+fetch("http://localhost:5678/api/categories")
     .then(response =>
         response.json()
     )
     .then(function (response) {
-        genererArticles(response);
+        genererFilterBar(response);
     })
     .catch(function () {
         alert("Erreur contenue ou communication API")
     });
-
-const preview = () => {
-    const file = document.querySelector("#import").files;
-    if (file) {
-        const fileReader = new FileReader();
-        const preview = document.getElementById('preview');
-        fileReader.onload = event => {
-            preview.setAttribute('src', event.target.result);
-        };
-        fileReader.readAsDataURL(file[0]);
+function genererFilterBar(category) {
+    document.querySelector(".filter-bar").innerHTML = " ";
+    const sectionFiltre = document.querySelector(".filter-bar");
+    const boutonTous = document.createElement("button");
+    boutonTous.innerText = "Tous";
+    boutonTous.dataset.category = "tous";
+    sectionFiltre.appendChild(boutonTous);
+    for (let i = 0; i < category.length; i++) {
+        const article = category[i];
+        const filtre = document.createElement("button");
+        filtre.innerText = article.name;
+        filtre.dataset.category = article.name;
+        sectionFiltre.appendChild(filtre);
     };
-    document.querySelector(".import-label-container").style.visibility = "hidden";
-    document.querySelector(".import-label-img-container").style.visibility = "visible";
-};
+}
 
+const projets = await fetch("http://localhost:5678/api/works")
+    .then(function (response) {
+        return response.json();
+    })
+    .catch(function () {
+        alert("Erreur contenue ou communication API")
+    });
+genererArticles(projets);
 function genererArticles(projetsVisbiles) {
     document.querySelector(".gallery").innerHTML = " ";
     for (let i = 0; i < projetsVisbiles.length; i++) {
@@ -40,7 +47,20 @@ function genererArticles(projetsVisbiles) {
         projetElement.appendChild(nomElement);
     }
 }
-//genererArticles(projets);
+
+const preview = () => {
+    const file = document.querySelector("#import").files;
+    if (file) {
+        const fileReader = new FileReader();
+        const preview = document.getElementById('preview');
+        fileReader.onload = event => {
+            preview.setAttribute('src', event.target.result);
+        };
+        fileReader.readAsDataURL(file[0]);
+    };
+    document.querySelector(".import-label-container").style.visibility = "hidden";
+    document.querySelector(".import-label-img-container").style.visibility = "visible";
+};
 
 function filtrerProjets(projets, category) {
     let projetsFiltres = projets.filter(function (projets) {
