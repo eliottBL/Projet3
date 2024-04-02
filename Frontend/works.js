@@ -112,8 +112,10 @@ function supprimerWork(id) {
         })
         .then(function (response) {
             genererGalleryModal(response);
+        })
+        .catch(function () {
+            alert("Erreur contenue ou communication API")
         });
-    // catch
 }
 function fermerModal() {
     document.querySelector("modal").style.display = "none";
