@@ -1,5 +1,16 @@
-const reponse = await fetch("http://localhost:5678/api/works");
-const projets = await reponse.json();
+/*const reponse = await fetch("http://localhost:5678/api/works");
+const projets = await reponse.json();*/
+fetch("http://localhost:5678/api/works")
+    .then(response =>
+        response.json()
+    )
+    .then(function (response) {
+        genererArticles(response);
+    })
+    .catch(function () {
+        alert("Erreur contenue ou communication API")
+    });
+
 const preview = () => {
     const file = document.querySelector("#import").files;
     if (file) {
@@ -29,7 +40,7 @@ function genererArticles(projetsVisbiles) {
         projetElement.appendChild(nomElement);
     }
 }
-genererArticles(projets);
+//genererArticles(projets);
 
 function filtrerProjets(projets, category) {
     let projetsFiltres = projets.filter(function (projets) {
@@ -95,11 +106,14 @@ function supprimerWork(id) {
         method: "DELETE",
         headers: { "accept": "*/*", "Authorization": "Bearer " + window.sessionStorage.getItem("token") },
     });
-    fetch("http://localhost:5678/api/works").then(function (response) {
-        return response.json();
-    }).then(function (response) {
-        genererGalleryModal(response);
-    });
+    fetch("http://localhost:5678/api/works")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (response) {
+            genererGalleryModal(response);
+        });
+    // catch
 }
 function fermerModal() {
     document.querySelector("modal").style.display = "none";
